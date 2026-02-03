@@ -1,0 +1,16 @@
+{
+    "name": "SARSRepresentative",
+    "alias": "sarsrepresentative",
+    "description": "SARS Representative Registration Module",
+    "author": "SmartDash",
+    "url": "",
+    "version": "1.0",
+    "keywords": ["sars", "representative", "registration", "compliance"],
+    "priority": 0,
+    "providers": [
+        "Modules\\SARSRepresentative\\Providers\\SARSRepresentativeServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
