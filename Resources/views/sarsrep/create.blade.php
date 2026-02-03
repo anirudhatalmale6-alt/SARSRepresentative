@@ -1,4 +1,4 @@
-@extends('clientmaster::layouts.default')
+@extends('smartdash::layouts.default')
 
 @section('title', isset($sarsRepRequest) ? 'Edit SARS Representative Registration' : 'New SARS Representative Registration')
 

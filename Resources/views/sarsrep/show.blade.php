@@ -1,7 +1,6 @@
-@extends('clientmaster::layouts.default')
+@extends('smartdash::layouts.default')
 
 @section('title', 'SARS Representative: ' . $sarsRepRequest->entity_name)
-@section('header_title', 'SARS Representative')
 
 @push('styles')
 <link href="/public/smartdash/vendor/sweetalert2/sweetalert2.min.css" rel="stylesheet">
