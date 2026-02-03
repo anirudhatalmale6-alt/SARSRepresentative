@@ -146,6 +146,7 @@
         $entityName = $sarsRepRequest->entity_name;
         $entityReg = $sarsRepRequest->entity_reg_number ?? '—';
         $currentDate = $sarsRepRequest->submitted_at ? $sarsRepRequest->submitted_at->format('d F Y') : now()->format('d F Y');
+        $numDirectors = $numberOfDirectors ?? 2;
     @endphp
 
     {{-- ============================================================== --}}
@@ -251,42 +252,25 @@
             </p>
 
             <table style="width: 100%; border: none;">
-                <tr>
-                    <td style="width: 50%; border: none; padding: 0 10px 15px 0;">
+                @for($i = 0; $i < $numDirectors; $i++)
+                    @if($i % 2 == 0)
+                        <tr>
+                    @endif
+                    <td style="width: 50%; border: none; padding: 0 {{ $i % 2 == 0 ? '10px 15px 0' : '0 15px 10px' }};">
                         <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Director 1 - Signature</div>
-                        <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Full Name</div>
-                        <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Date</div>
-                    </td>
-                    <td style="width: 50%; border: none; padding: 0 0 15px 10px;">
-                        <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Director 2 - Signature</div>
+                        <div class="signature-label">Director {{ $i + 1 }} - Signature</div>
                         <div class="signature-line" style="width: 100%;"></div>
                         <div class="signature-label">Full Name</div>
                         <div class="signature-line" style="width: 100%;"></div>
                         <div class="signature-label">Date</div>
                     </td>
-                </tr>
-                <tr>
-                    <td style="width: 50%; border: none; padding: 0 10px 15px 0;">
-                        <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Director 3 - Signature (if applicable)</div>
-                        <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Full Name</div>
-                        <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Date</div>
-                    </td>
-                    <td style="width: 50%; border: none; padding: 0 0 15px 10px;">
-                        <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Director 4 - Signature (if applicable)</div>
-                        <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Full Name</div>
-                        <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Date</div>
-                    </td>
-                </tr>
+                    @if($i % 2 == 1 || $i == $numDirectors - 1)
+                        @if($i % 2 == 0)
+                            <td style="width: 50%; border: none;">&nbsp;</td>
+                        @endif
+                        </tr>
+                    @endif
+                @endfor
             </table>
         </div>
 
@@ -540,37 +524,25 @@
             </p>
 
             <table style="width: 100%; border: none;">
-                <tr>
-                    <td style="width: 50%; border: none; padding: 0 10px 15px 0;">
+                @for($i = 0; $i < $numDirectors; $i++)
+                    @if($i % 2 == 0)
+                        <tr>
+                    @endif
+                    <td style="width: 50%; border: none; padding: 0 {{ $i % 2 == 0 ? '10px 15px 0' : '0 15px 10px' }};">
                         <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Trustee 1 - Signature</div>
-                        <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Full Name</div>
-                        <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Date</div>
-                    </td>
-                    <td style="width: 50%; border: none; padding: 0 0 15px 10px;">
-                        <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Trustee 2 - Signature</div>
+                        <div class="signature-label">Trustee {{ $i + 1 }} - Signature</div>
                         <div class="signature-line" style="width: 100%;"></div>
                         <div class="signature-label">Full Name</div>
                         <div class="signature-line" style="width: 100%;"></div>
                         <div class="signature-label">Date</div>
                     </td>
-                </tr>
-                <tr>
-                    <td style="width: 50%; border: none; padding: 0 10px 15px 0;">
-                        <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Trustee 3 - Signature (if applicable)</div>
-                        <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Full Name</div>
-                        <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Date</div>
-                    </td>
-                    <td style="width: 50%; border: none; padding: 0 0 15px 10px;">
-                        &nbsp;
-                    </td>
-                </tr>
+                    @if($i % 2 == 1 || $i == $numDirectors - 1)
+                        @if($i % 2 == 0)
+                            <td style="width: 50%; border: none;">&nbsp;</td>
+                        @endif
+                        </tr>
+                    @endif
+                @endfor
             </table>
         </div>
 
@@ -829,42 +801,25 @@
             </p>
 
             <table style="width: 100%; border: none;">
-                <tr>
-                    <td style="width: 50%; border: none; padding: 0 10px 15px 0;">
+                @for($i = 0; $i < $numDirectors; $i++)
+                    @if($i % 2 == 0)
+                        <tr>
+                    @endif
+                    <td style="width: 50%; border: none; padding: 0 {{ $i % 2 == 0 ? '10px 15px 0' : '0 15px 10px' }};">
                         <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Chairperson - Signature</div>
-                        <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Full Name</div>
-                        <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Date</div>
-                    </td>
-                    <td style="width: 50%; border: none; padding: 0 0 15px 10px;">
-                        <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Secretary / Treasurer - Signature</div>
+                        <div class="signature-label">Board Member {{ $i + 1 }} - Signature</div>
                         <div class="signature-line" style="width: 100%;"></div>
                         <div class="signature-label">Full Name</div>
                         <div class="signature-line" style="width: 100%;"></div>
                         <div class="signature-label">Date</div>
                     </td>
-                </tr>
-                <tr>
-                    <td style="width: 50%; border: none; padding: 0 10px 15px 0;">
-                        <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Board Member 3 - Signature (if applicable)</div>
-                        <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Full Name</div>
-                        <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Date</div>
-                    </td>
-                    <td style="width: 50%; border: none; padding: 0 0 15px 10px;">
-                        <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Board Member 4 - Signature (if applicable)</div>
-                        <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Full Name</div>
-                        <div class="signature-line" style="width: 100%;"></div>
-                        <div class="signature-label">Date</div>
-                    </td>
-                </tr>
+                    @if($i % 2 == 1 || $i == $numDirectors - 1)
+                        @if($i % 2 == 0)
+                            <td style="width: 50%; border: none;">&nbsp;</td>
+                        @endif
+                        </tr>
+                    @endif
+                @endfor
             </table>
         </div>
 

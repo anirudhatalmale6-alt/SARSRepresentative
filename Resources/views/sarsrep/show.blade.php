@@ -365,6 +365,12 @@
                     <div class="detail-label">Entity Type</div>
                     <div class="detail-value {{ !$sarsRepRequest->entity_type ? 'empty' : '' }}">{{ $sarsRepRequest->entity_type ?: 'Not set' }}</div>
                 </div>
+                @if(!in_array($sarsRepRequest->entity_type, ['sole_director_company', 'sole_trustee_trust']))
+                <div class="detail-row">
+                    <div class="detail-label">Number of Directors / Trustees</div>
+                    <div class="detail-value">{{ $sarsRepRequest->number_of_directors ?? 2 }}</div>
+                </div>
+                @endif
                 <div class="detail-row">
                     <div class="detail-label">Address</div>
                     <div class="detail-value {{ !$sarsRepRequest->entity_address ? 'empty' : '' }}">{{ $sarsRepRequest->entity_address ?: 'Not set' }}</div>

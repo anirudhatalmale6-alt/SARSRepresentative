@@ -136,6 +136,18 @@
                             </div>
                         </div>
 
+                        {{-- Row 1b: Number of Directors/Trustees --}}
+                        <div class="row" id="directors_count_row">
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label for="number_of_directors" class="form-label">Number of Directors / Trustees <span class="text-danger">*</span></label>
+                                    <input type="number" id="number_of_directors" name="number_of_directors" class="form-control @error('number_of_directors') is-invalid @enderror" value="{{ old('number_of_directors', $sarsRepRequest->number_of_directors ?? 2) }}" min="1" max="20" required>
+                                    <small class="text-muted">(used for signature blocks on resolution)</small>
+                                    @error('number_of_directors')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                                </div>
+                            </div>
+                        </div>
+
                         {{-- Row 2: Entity Registered Address --}}
                         <div class="row">
                             <div class="col-md-12">
@@ -343,6 +355,24 @@ document.addEventListener('DOMContentLoaded', function() {
             tickIcon: 'fa fa-check'
         });
     }
+
+    // Show/hide director count based on entity type
+    var entityTypeField = document.getElementById('entity_type');
+    var directorsRow = document.getElementById('directors_count_row');
+    var directorsInput = document.getElementById('number_of_directors');
+
+    function toggleDirectorsField() {
+        var val = entityTypeField.value;
+        if (val === 'sole_director_company' || val === 'sole_trustee_trust') {
+            directorsRow.style.display = 'none';
+            directorsInput.value = 1;
+        } else {
+            directorsRow.style.display = '';
+        }
+    }
+
+    entityTypeField.addEventListener('change', toggleDirectorsField);
+    toggleDirectorsField(); // Run on load
 
     // SweetAlert2 flash messages
     @if(session('error'))

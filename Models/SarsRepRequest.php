@@ -19,6 +19,7 @@ class SarsRepRequest extends Model
         'vat_ref',
         'uif_sdl_ref',
         'entity_address',
+        'number_of_directors',
         'sars_representative_id',
         'tax_types',
         'submission_method',
